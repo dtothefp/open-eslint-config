@@ -79,7 +79,7 @@ module.exports =
 	  function findConfig() {
 	    var rootPath = __webpack_require__(5).path;
 	    var configFile = 'eslint-config.json';
-	    var moduleName = 'eslint-config';
+	    var moduleName = 'open-eslint-config';
 	    var prod = rootPath + '/node_modules/' + moduleName + '/dist/' + configFile;
 	    var dev = rootPath + '/lib/' + configFile;
 	
