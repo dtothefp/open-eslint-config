@@ -22,7 +22,7 @@ const logger = function logger(err, stats) {
 
 gulp.task('lint', () => {
   const lintConfig = eslintConfig({
-    isDev: true,
+    isDev: isWatch,
     lintEnv: 'build'
   });
 
@@ -47,4 +47,8 @@ gulp.task('bundle', () => {
   }
 });
 
-gulp.task('release', ['copy', 'bundle']);
+gulp.task('release', ['lint', 'copy', 'bundle']);
+gulp.task('default', ['lint', 'copy', 'bundle']);
+gulp.task('watch', ['lint', 'bundle'], () => {
+  gulp.watch(src, ['lint']);
+});

@@ -163,7 +163,11 @@ module.exports =
 	    'no-shadow': 0, // http://eslint.org/docs/rules/no-shadow
 	    'no-shadow-restricted-names': 2, // http://eslint.org/docs/rules/no-shadow-restricted-names
 	    'no-undef': 2, // http://eslint.org/docs/rules/no-undef
-	    'no-unused-vars': [2, { // http://eslint.org/docs/rules/no-unused-vars
+	    'no-unused-expressions': [1, { // http://eslint.org/docs/rules/no-unused-expressions.html
+	      allowShortCircuit: true,
+	      allowTernary: true
+	    }],
+	    'no-unused-vars': [1, { // http://eslint.org/docs/rules/no-unused-vars
 	      'vars': 'local',
 	      'args': 'none'
 	    }],
@@ -172,7 +176,7 @@ module.exports =
 	    /**
 	     * Possible errors
 	     */
-	    'comma-dangle': [2, 'never'], // http://eslint.org/docs/rules/comma-dangle
+	    'comma-dangle': [1, 'never'], // http://eslint.org/docs/rules/comma-dangle
 	    'no-cond-assign': [2, 'always'], // http://eslint.org/docs/rules/no-cond-assign
 	    'no-constant-condition': 1, // http://eslint.org/docs/rules/no-constant-condition
 	    'no-dupe-keys': 2, // http://eslint.org/docs/rules/no-dupe-keys
@@ -240,13 +244,17 @@ module.exports =
 	    /**
 	     * Style
 	     */
-	    'indent': [2, 2], // http://eslint.org/docs/rules/indent
-	    'brace-style': [2, // http://eslint.org/docs/rules/brace-style
-	    '1tbs', {
+	    'indent': [1, 2, // http://eslint.org/docs/rules/indent
+	    {
+	      'SwitchCase': 1
+	    }],
+	    'brace-style': [// http://eslint.org/docs/rules/brace-style
+	    2, '1tbs', {
 	      'allowSingleLine': true
 	    }],
 	    'quotes': [2, 'single', 'avoid-escape' // http://eslint.org/docs/rules/quotes
 	    ],
+	    'jsx-quotes': 2, // http://eslint.org/docs/rules/jsx-quotes.html
 	    'camelcase': [2, { // http://eslint.org/docs/rules/camelcase
 	      'properties': 'never'
 	    }],
@@ -279,7 +287,7 @@ module.exports =
 	      initialized: 'never'
 	    }], // http://eslint.org/docs/rules/one-var
 	    'padded-blocks': [0, 'never'], // http://eslint.org/docs/rules/padded-blocks
-	    'semi': [2, 'always'], // http://eslint.org/docs/rules/semi
+	    'semi': [1, 'always'], // http://eslint.org/docs/rules/semi
 	    'semi-spacing': [2, { // http://eslint.org/docs/rules/semi-spacing
 	      'before': false,
 	      'after': true
@@ -324,12 +332,27 @@ module.exports =
 	    build: {
 	      'no-debugger': 1,
 	      'no-alert': 1
+	    },
+	    overrides: {
+	      'no-unused-expressions': [2, {
+	        allowShortCircuit: true,
+	        allowTernary: true
+	      }],
+	      'no-unused-vars': [2, {
+	        'vars': 'local',
+	        'args': 'none'
+	      }],
+	      'comma-dangle': 2,
+	      'semi': [2, 'always'],
+	      'indent': [2, 2, {
+	        'SwitchCase': 1
+	      }]
 	    }
 	  };
 	
 	  var config = (0, _objectAssign2['default'])({}, base, envs[lintEnv]);
 	
-	  return isDev ? config : (0, _objectAssign2['default'])({}, config, prod[lintEnv]);
+	  return isDev ? config : (0, _objectAssign2['default'])({}, config, prod.overrides, prod[lintEnv]);
 	};
 	
 	module.exports = exports['default'];
