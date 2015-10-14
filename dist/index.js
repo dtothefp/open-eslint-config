@@ -380,6 +380,10 @@ module.exports =
 	 */
 	
 	exports['default'] = function (opts) {
+	  if (opts.react === false) {
+	    return {};
+	  }
+	
 	  var isDev = opts.isDev;
 	
 	  var base = {
