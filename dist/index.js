@@ -75,10 +75,13 @@ module.exports =
 	 * @return {Object}
 	 */
 	
-	exports['default'] = function (opts) {
+	exports['default'] = function () {
+	  var opts = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	
+	  var useReact = opts.react !== false;
 	  function findConfig() {
 	    var rootPath = __webpack_require__(5).path;
-	    var configFile = 'eslint-config.json';
+	    var configFile = useReact ? 'eslint-react-config.json' : 'eslint-config.json';
 	    var moduleName = 'open-eslint-config';
 	    var prod = rootPath + '/node_modules/' + moduleName + '/dist/' + configFile;
 	    var dev = rootPath + '/lib/' + configFile;
@@ -87,7 +90,7 @@ module.exports =
 	  }
 	
 	  return {
-	    rules: (0, _objectAssign2['default'])({}, (0, _baseRules2['default'])(opts), (0, _reactRules2['default'])(opts)),
+	    rules: (0, _objectAssign2['default'])({}, (0, _baseRules2['default'])(opts), useReact ? (0, _reactRules2['default'])(opts) : {}),
 	    configFile: findConfig(),
 	    useEslintrc: false
 	  };
@@ -380,10 +383,6 @@ module.exports =
 	 */
 	
 	exports['default'] = function (opts) {
-	  if (opts.react === false) {
-	    return {};
-	  }
-	
 	  var isDev = opts.isDev;
 	
 	  var base = {
