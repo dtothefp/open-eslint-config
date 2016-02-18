@@ -106,11 +106,6 @@ exports.default = function () {
       initialized: 'never'
     }], // http://eslint.org/docs/rules/one-var
     'padded-blocks': [0, 'never'], // http://eslint.org/docs/rules/padded-blocks
-    'semi': [1, 'always'], // http://eslint.org/docs/rules/semi
-    'semi-spacing': [2, { // http://eslint.org/docs/rules/semi-spacing
-      'before': false,
-      'after': true
-    }],
     'space-before-blocks': 2, // http://eslint.org/docs/rules/space-before-blocks
     'space-before-function-paren': [2, 'never'], // http://eslint.org/docs/rules/space-before-function-paren
     'space-infix-ops': 2, // http://eslint.org/docs/rules/space-infix-ops
@@ -156,6 +151,15 @@ exports.default = function () {
 
     // No debugger will be turned on on an environmental basis
     'no-debugger': 0, // http://eslint.org/docs/rules/no-debugger
+
+    /**
+     * Best practices
+     */
+    'semi': [1, 'always'], // http://eslint.org/docs/rules/semi
+    'semi-spacing': [2, { // http://eslint.org/docs/rules/semi-spacing
+      'before': false,
+      'after': true
+    }],
 
     /**
      * Style
