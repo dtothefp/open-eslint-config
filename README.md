@@ -68,3 +68,9 @@ Changes rules per env
 Type: `Boolean`
 
 Add rules for React/JSX
+
+#### options.generate
+
+Type: `Boolean`
+
+Generate a `.eslintrc` in your project root
