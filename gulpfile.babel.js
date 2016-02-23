@@ -18,7 +18,8 @@ gulp.task('clean', () => del(dest));
 gulp.task('lint', () => {
   const lintConfig = eslintConfig({
     isDev: isWatch,
-    lintEnv: 'build'
+    lintEnv: 'build',
+    generate: true
   });
 
   return gulp.src(src)

@@ -5,12 +5,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 exports.default = function (opts) {
+  var generate = opts.generate;
   var react = opts.react;
 
   var rules = (0, _baseRules2.default)(opts);
 
   if (react) {
     (0, _objectAssign2.default)(rules, (0, _reactRules2.default)(opts));
+  }
+
+  if (generate) {
+    (0, _generateEslintrc2.default)(opts);
   }
 
   return {
@@ -35,6 +40,10 @@ var _baseRules2 = _interopRequireDefault(_baseRules);
 var _reactRules = require('./react-rules');
 
 var _reactRules2 = _interopRequireDefault(_reactRules);
+
+var _generateEslintrc = require('./generate-eslintrc');
+
+var _generateEslintrc2 = _interopRequireDefault(_generateEslintrc);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
