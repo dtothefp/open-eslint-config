@@ -1,6 +1,6 @@
 {
   "name": "eslint-config",
-  "version": "0.3.0-legacy",
+  "version": "0.4.0-legacy",
   "description": "Linting Config",
   "main": "dist/index.js",
   "scripts": {
