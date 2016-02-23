@@ -15,3 +15,6 @@ node_modules
 
 # This is generated  by post install
 .eslintrc
+
+lib/test.js
+dist/test.js
